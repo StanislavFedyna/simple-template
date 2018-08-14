@@ -6,8 +6,8 @@ var gulp         = require('gulp'),
 gulp.task('sass', function(){ // Создаем таск Sass
     return gulp.src('sass/**/*.scss') // Берем источник
         .pipe(csscomb())
-        .pipe(sass()) // Преобразуем Sass в CSS посредством gulp-sass
-        .pipe(gulp.dest('../simpleTemplate/css')) // Выгружаем результата в папку src/css
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('css/')) // Выгружаем результата в папку src/css
         .pipe(browserSync.reload({stream: true})) // Обновляем CSS на странице при изменении
 });
 
